@@ -48,8 +48,9 @@ int main() {
   // pid.Init(0.08, 0.000, 3.0); ... case 9: next coefficient -> kd; first try kd = 3.0 ... car could pass the complete track but with to much oszillation
   // pid.Init(0.08, 0.000, 2.0); ... case 10: coefficient kd lower than case 9 .... better result
   // pid.Init(0.08, 0.000, 1.0); ... case 11: coefficient kd lower than case 10 ... partly dangerously close the the lane lines
-  // pid.Init(0.08, 0.000, 1.5); // ... case 12: coefficient kd higher than case 11;  ... slightly better in lane line area
-  pid.Init(0.08, 0.000, 1.7);
+  // pid.Init(0.08, 0.000, 1.5); ... case 12: coefficient kd higher than case 11;  ... slightly better in lane line area
+  // pid.Init(0.08, 0.000, 1.7); ... case 13: coefficient kd higher than case 12;  ... again slightly better in lane line area but not really good
+  pid.Init(0.08, 0.004, 1.7); // ... case 14: next coefficient -> ki; first try ki = 0.004 ... 
 
   h.onMessage([&pid](uWS::WebSocket<uWS::SERVER> ws, char *data, size_t length, 
                      uWS::OpCode opCode) {
