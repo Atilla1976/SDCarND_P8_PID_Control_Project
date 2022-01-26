@@ -39,7 +39,8 @@ int main() {
    */
   // pid.Init(0.2, 0.000, 0.0); ... best case until now
   // pid.Init(0.5, 0.000, 0.0); ... to much oszillation
-  pid.Init(1.0, 0.000, 0.0);
+  // pid.Init(1.0, 0.000, 0.0); ... as expected even worse oszillation
+  pid.Init(0.1, 0.000, 0.0);
 
   h.onMessage([&pid](uWS::WebSocket<uWS::SERVER> ws, char *data, size_t length, 
                      uWS::OpCode opCode) {
