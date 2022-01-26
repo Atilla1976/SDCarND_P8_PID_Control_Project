@@ -44,7 +44,8 @@ int main() {
   // pid.Init(0.05, 0.000, 0.0); ... case 5: coefficient kp lower than case 4; ... better result
   // pid.Init(0.01, 0.000, 0.0); ... case 6: coefficient kp lower than case 5; ... worse result
   // pid.Init(0.03, 0.000, 0.0); ... case 7: coefficient kp higher than case 6; ... farthest distance traveled so far, but too soft correction
-  pid.Init(0.08, 0.000, 0.0); // ... case 7: coefficient kp higher than case 6; ... 
+  // pid.Init(0.08, 0.000, 0.0); ... case 8: coefficient kp higher than case 5; ... kp range between 0.5 an 1.0 gets the best results
+  pid.Init(0.08, 0.000, 3.0); // ... case 9: next coefficient: kd; first try kd = 3.0
 
   h.onMessage([&pid](uWS::WebSocket<uWS::SERVER> ws, char *data, size_t length, 
                      uWS::OpCode opCode) {
