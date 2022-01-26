@@ -37,11 +37,12 @@ int main() {
   /**
    * TODO: Initialize the pid variable.
    */
-  // pid.Init(0.2, 0.000, 0.0); ... case 1: coefficient kp first try 0,2, ki and kd = 0; best case until now
-  // pid.Init(0.5, 0.000, 0.0); ... case 2: coefficient kp higher; ... to much oszillation
-  // pid.Init(1.0, 0.000, 0.0); ... case 3: coefficient kp even higher; ... as expected even worse oszillation
-  // pid.Init(0.1, 0.000, 0.0); ... case 4: coefficient kp lower than case 1; ... better result
-   pid.Init(0.05, 0.000, 0.0); // ... case 5: coefficient kp lower than case 4; ... better result
+  // pid.Init(0.2, 0.000, 0.0); .... case 1: coefficient kp first try 0,2, ki and kd = 0; best case until now
+  // pid.Init(0.5, 0.000, 0.0); .... case 2: coefficient kp higher; ... to much oszillation
+  // pid.Init(1.0, 0.000, 0.0); .... case 3: coefficient kp even higher; ... as expected even worse oszillation
+  // pid.Init(0.1, 0.000, 0.0); .... case 4: coefficient kp lower than case 1; ... better result
+  // pid.Init(0.05, 0.000, 0.0); ... case 5: coefficient kp lower than case 4; ... better result
+  pid.Init(0.01, 0.000, 0.0); // ... case 5: coefficient kp lower than case 4; ... better result
 
   h.onMessage([&pid](uWS::WebSocket<uWS::SERVER> ws, char *data, size_t length, 
                      uWS::OpCode opCode) {
