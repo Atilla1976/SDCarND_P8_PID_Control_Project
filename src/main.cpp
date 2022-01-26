@@ -42,7 +42,8 @@ int main() {
   // pid.Init(1.0, 0.000, 0.0); .... case 3: coefficient kp even higher; ... as expected even worse oszillation
   // pid.Init(0.1, 0.000, 0.0); .... case 4: coefficient kp lower than case 1; ... better result
   // pid.Init(0.05, 0.000, 0.0); ... case 5: coefficient kp lower than case 4; ... better result
-  pid.Init(0.01, 0.000, 0.0); // ... case 5: coefficient kp lower than case 4; ... better result
+  // pid.Init(0.01, 0.000, 0.0); ... case 6: coefficient kp lower than case 5; ... worse result
+  pid.Init(0.03, 0.000, 0.0); // ... case 7: coefficient kp higher than case 6; ... worse result
 
   h.onMessage([&pid](uWS::WebSocket<uWS::SERVER> ws, char *data, size_t length, 
                      uWS::OpCode opCode) {
