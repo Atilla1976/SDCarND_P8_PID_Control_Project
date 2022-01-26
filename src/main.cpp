@@ -46,7 +46,8 @@ int main() {
   // pid.Init(0.03, 0.000, 0.0); ... case 7: coefficient kp higher than case 6; ... farthest distance traveled so far, but too soft correction
   // pid.Init(0.08, 0.000, 0.0); ... case 8: coefficient kp higher than case 5; ... kp range between 0.5 an 1.0 gets the best results
   // pid.Init(0.08, 0.000, 3.0); ... case 9: next coefficient -> kd; first try kd = 3.0 ... car could pass the complete track but with to much oszillation
-  pid.Init(0.08, 0.000, 2.0); //... case 10: coefficient kd lower
+  // pid.Init(0.08, 0.000, 2.0); ... case 10: coefficient kd lower ... better result
+  pid.Init(0.08, 0.000, 1.0);
 
   h.onMessage([&pid](uWS::WebSocket<uWS::SERVER> ws, char *data, size_t length, 
                      uWS::OpCode opCode) {
