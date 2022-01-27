@@ -55,8 +55,8 @@ int main() {
   // pid.Init(0.09, 0.001, 1.7); ... case 15: coefficient ki lower than case 14;  ... car could not keep the lane but with strong oszillation
   // pid.Init(0.12, 0.0005, 1.8); // .. case 16: coefficient ki lower than case 15;  ...best result so far
   // pid.Init(0.12, 0.0007, 1.9);
-  pid.Init(0.12, 0.0009, 1.9);
- 
+  pid.Init(0.21, 0.00095, 0.14);
+  
   h.onMessage([&pid](uWS::WebSocket<uWS::SERVER> ws, char *data, size_t length, 
                      uWS::OpCode opCode) {
     // "42" at the start of the message means there's a websocket message event.
