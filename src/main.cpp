@@ -58,7 +58,7 @@ int main() {
   // pid.Init(0.13, 0.00095, 1.9);  car inside lane lines
   // pid.Init(0.13, 0.00095, 1.7); car inside lane lines
   // pid.Init(0.2, 0.00095, 1.68);
-  pid.Init(0.06, 0.0, 0.5);
+  pid.Init(0.06, 0.0, 1.0);
   
   h.onMessage([&pid](uWS::WebSocket<uWS::SERVER> ws, char *data, size_t length, 
                      uWS::OpCode opCode) {
@@ -96,7 +96,7 @@ int main() {
 
           json msgJson;
           msgJson["steering_angle"] = steer_value;
-          msgJson["throttle"] = (1 - 3 * steer_value)*0.35;   // Formula switches to between [0, 1], larger steering angle means less throttle. Multiplied by 0.35 for safety reasons.
+          msgJson["throttle"] = 0.3; //(1 - 3 * steer_value)*0.35;   // Formula switches to between [0, 1], larger steering angle means less throttle. Multiplied by 0.35 for safety reasons.
           auto msg = "42[\"steer\"," + msgJson.dump() + "]";
           std::cout << msg << std::endl;
           ws.send(msg.data(), msg.length(), uWS::OpCode::TEXT);
