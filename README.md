@@ -1,7 +1,8 @@
 # CarND-Controls-PID
 
-Self-Driving Car Engineer Nanodegree Program<br>
-![](images/Animation_Passing_sm5.gif)
+Self-Driving Car Engineer Nanodegree Program<br><br>
+![](images/Animation_Passing_sm7.gif)<br><br>
+
 ## Project summary
 
 by Atilla Özdemir, Student @ Udacity, Stuttgart (Germany) in January 2022
@@ -22,7 +23,7 @@ The speed limit has been increased from 30 mph to 100 mph. But I didn't have to 
 
 "A proportional–integral–derivative controller (PID controller or three-term controller) is a control loop mechanism employing feedback that is widely used in industrial control systems and a variety of other applications requiring continuously modulated control. A PID controller continuously calculates an *error value* **e(t)** as the difference between a desired setpoint (SP) and a measured process variable (PV) and applies a correction based on proportional, integral, and derivative terms (denoted *P*, *I*, and *D* respectively), hence the name." [(Wikipedia)](https://en.wikipedia.org/wiki/PID_controller)
 
-## The effect each of the P, I, D components had in my implementation.
+## The effect each of the P, I, D components had in my implementation:
 
   + "Term P is proportional to the current value of the SP − PV error (CTE). For example, if the error is large and positive, the control output will be proportionately large and positive, taking into account the gain factor "Kp". Using proportional control alone will result in an error between the setpoint and the actual process value because it requires an error to generate the proportional response. If there is no error, there is no corrective response.
   + Term I accounts for past values of the SP − PV error and integrates them over time to produce the I term. For example, if there is a residual SP − PV error after the application of proportional control, the integral term seeks to eliminate the residual error by adding a control effect due to the historic cumulative value of the error. When the error is eliminated, the integral term will cease to grow. This will result in the proportional effect diminishing as the error decreases, but this is compensated for by the growing integral effect.
@@ -33,13 +34,17 @@ When all components are used, the mathematical equation is given by:
 
 This equation is implemented in [pid.cpp](https://github.com/Atilla1976/SDCarND_P8_PID_Control_Project/blob/master/src/PID.cpp) in line 38.
 
-In a first step I initialized the parameters to 'Kp = 0.2, Ki = 0.0, Kd = 0.0) and then changed the parametre Kp manually.  I got the optimum in the range of Kp = 0.08.
-I repeat this procedure with Ki and Kd, so I got the final parameters <br>
-`Kp = 0.08, Ki = 0,0005, Kd = 1,7`
+## Tuning the hyperparameters
+The most important part of the project is to tune the hyperparameters.
+I decided for the manual tuning to understand every single effect of PID parameters:
+  + First I set all parameters to zero.
+  + I increased the P gain until the response to a disturbance was steady oscillation.
+  + Then I increased the D gain until the oscillations went away.
+  + I repeaded the last two steps until increasing the D gain could not stop the oscillations anymore.
+  + I set P and D gain to the last stable values: `Kp = 0.12 and Kd: 1.62`.
+  + Then I increased the I gain until it reduced the number of oscillations.
 
-## PID controller to control the speed
-`throttle =  (1 - steer_value) * 0.4` switches to between [0, 1]. A larger steering angle means less throttle.
- I multiplied by 0.4 for safety reasons.
+So I got the final hyperparameters: `Kp = 0.12; Ki = 0,0007; Kd = 1.62`
 
 
 ## Original Readme by UDACITY:
