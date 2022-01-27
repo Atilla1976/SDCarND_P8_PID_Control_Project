@@ -86,8 +86,9 @@ int main() {
            *   Maybe use another PID controller to control the speed!
            */
           pid.UpdateError(cte);
-          
           steer_value = pid.TotalError();
+          if(steer_value > 1.0) steer_value = 1.0;
+          if(steer_value < -1.0) steer_value = -1.0;
           
           // DEBUG
           std::cout << "CTE: " << cte << " Steering Value: " << steer_value 
