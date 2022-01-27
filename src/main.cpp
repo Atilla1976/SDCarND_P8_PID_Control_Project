@@ -52,7 +52,7 @@ int main() {
   // pid.Init(0.08, 0.000, 1.7); ... case 13: coefficient kd higher than case 12;  ... again slightly better in lane line area but not really good
   // pid.Init(0.08, 0.004, 1.7); ... case 14: next coefficient -> ki; first try ki = 0.004 ... car could not keep the lane 
   // pid.Init(0.08, 0.001, 1.7); ... case 15: coefficient ki lower than case 14;  ... car could not keep the lane but with strong oszillation
-  pid.Init(0.08, 0.0005, 1.7); // .. case 16: coefficient ki lower than case 15;  ...best result so far
+  pid.Init(0.09, 0.0005, 1.7); // .. case 16: coefficient ki lower than case 15;  ...best result so far
   
  
   h.onMessage([&pid](uWS::WebSocket<uWS::SERVER> ws, char *data, size_t length, 
