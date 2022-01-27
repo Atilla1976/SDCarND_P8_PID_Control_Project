@@ -56,7 +56,7 @@ int main() {
   // pid.Init(0.12, 0.0005, 1.8); // .. case 16: coefficient ki lower than case 15;  ...best result so far
   // pid.Init(0.12, 0.0007, 1.9);
   // pid.Init(0.13, 0.00095, 1.9);  car inside lane lines
-  pid.Init(0.125, 0.00095, 1.8);
+  pid.Init(0.13, 0.00095, 1.8);
   
   h.onMessage([&pid](uWS::WebSocket<uWS::SERVER> ws, char *data, size_t length, 
                      uWS::OpCode opCode) {
