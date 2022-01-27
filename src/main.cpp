@@ -92,7 +92,7 @@ int main() {
 
           json msgJson;
           msgJson["steering_angle"] = steer_value;
-          msgJson["throttle"] = (1 - steer_value)*0.35;   // Formula switches to between [0, 1], larger steering angle means less throttle. Multiplied by 0.35 for safety reasons.
+          msgJson["throttle"] = 0.1 // (1 - steer_value)*0.35;   // Formula switches to between [0, 1], larger steering angle means less throttle. Multiplied by 0.35 for safety reasons.
           auto msg = "42[\"steer\"," + msgJson.dump() + "]";
           std::cout << msg << std::endl;
           ws.send(msg.data(), msg.length(), uWS::OpCode::TEXT);
