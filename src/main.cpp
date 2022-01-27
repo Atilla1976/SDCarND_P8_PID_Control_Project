@@ -58,7 +58,7 @@ int main() {
   // pid.Init(0.13, 0.00095, 1.9);  car inside lane lines
   // pid.Init(0.13, 0.00095, 1.7); car inside lane lines
   // pid.Init(0.2, 0.00095, 1.68);
-  pid.Init(0.06, 0.0, 3.0);
+  pid.Init(0.06, 0.0, 5.0);
   
   h.onMessage([&pid](uWS::WebSocket<uWS::SERVER> ws, char *data, size_t length, 
                      uWS::OpCode opCode) {
