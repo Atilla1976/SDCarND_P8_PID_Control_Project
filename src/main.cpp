@@ -55,7 +55,7 @@ int main() {
   // pid.Init(0.09, 0.001, 1.7); ... case 15: coefficient ki lower than case 14;  ... car could not keep the lane but with strong oszillation
   // pid.Init(0.12, 0.0005, 1.8); // .. case 16: coefficient ki lower than case 15;  ...best result so far
   // pid.Init(0.12, 0.0007, 1.9);
-  pid.Init(0.21, 0.00095, 0.14);
+  pid.Init(0.12, 0.00095, 1.9);
   
   h.onMessage([&pid](uWS::WebSocket<uWS::SERVER> ws, char *data, size_t length, 
                      uWS::OpCode opCode) {
@@ -92,7 +92,7 @@ int main() {
 
           json msgJson;
           msgJson["steering_angle"] = steer_value;
-          msgJson["throttle"] = 0.5; // (1 - steer_value)*0.35;   // Formula switches to between [0, 1], larger steering angle means less throttle. Multiplied by 0.35 for safety reasons.
+          msgJson["throttle"] = (1 - 2 * steer_value)*0.35;   // Formula switches to between [0, 1], larger steering angle means less throttle. Multiplied by 0.35 for safety reasons.
           auto msg = "42[\"steer\"," + msgJson.dump() + "]";
           std::cout << msg << std::endl;
           ws.send(msg.data(), msg.length(), uWS::OpCode::TEXT);
